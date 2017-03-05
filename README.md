@@ -54,7 +54,7 @@ Ok, time to train the AI. I added an option to the command-line for this, which 
 
 I tweaked the AI to prefer moves that had no child moves, i.e. a win or tie. If no winning move is available, it prefers moves it has never made before, to flesh out the move tree. Finally, it defaults back to making the same "non-losing" moves as a last resort.
 
-This tweak improved the AI's performance noticeably but it was still far from perfect. I realized the problem was the AI's training parter. When playing itself it would win in situtations where it shouldn't because it's opponent was choosing random moves, instead of optimal moves. It was learning bad habits from itself.
+This tweak improved the AI's performance noticeably but it was still far from perfect. I realized the problem was the AI's training partner. When playing itself it would win in situtations where it shouldn't because it's opponent was choosing random moves, instead of optimal moves. It was learning bad habits from itself.
 
 
 
@@ -66,7 +66,7 @@ Translated to code, this takes the form of a depth-first search of the tree of a
 
 Now my AI has a responsible training partner and if it's trained with 10,000+ games it plays really well. Of course it will occasionally run into situations it hasn't encountered before (it prints this to the console to inform the user) but they tend to be further down the move tree so it will learn pretty quickly.
 
-Oddly enough, after completing the Minimax implementation I realized it also satisfied the problem statement: You’re not allowed to embed any knowledge of the game into your AI beyond making legal moves and recognizing that it has won or lost.
+Oddly enough, after completing the Minimax implementation I realized it also satisfied the problem statement: "You’re not allowed to embed any knowledge of the game into your AI beyond making legal moves and recognizing that it has won or lost."
 
 Minimax has no knowledge of the game's rules or logic and only needs to know which moves are legal and if they end in a win, loss or tie. So the last bit of the problem about "learning" is unecessary, and so is my whole AI. Oh well!
 
