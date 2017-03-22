@@ -48,7 +48,9 @@ First things first, my algorithm for searching through the replays was pretty sl
 
 To speed things up I wrote a custom tree structure where each node has nine children, or as I like to call it, a Nine-Ary Tree. Each node stores a move and each index in the child node array represents a potential next move. Now after each game, I add the sequence to the tree -- start at the root and index into the children using the spot of the first move, place a new node there, then do the same with the new node and the next move, and so on...
 
-Now, when looking up a sequence mid-game the AI just walks the tree (a maximum of nine moves deep) which is O(1). Additionally, when inserting into the tree, I cache the end result of the game at every node along the way. This way the AI can immediately know all potential results of a move, without searching further down every branch.
+EDIT: A much more succinct way to describe the structure is as a prefix tree (trie), but instead of words, sequences of moves are stored
+
+Now, when looking up a sequence mid-game the AI just walks the tree, which ends up being O(1) due to a depth limit of 9. Additionally, when inserting into the tree, I cache the end result of the game at every node along the way. This way the AI can immediately know all potential results of a move, without searching further down every branch.
 
 Ok, time to train the AI. I added an option to the command-line for this, which triggers a loop of the AI playing itself for as many games as the user specifies. Sadly, even after millions of games of training, I was able to beat the AI consistently.
 
